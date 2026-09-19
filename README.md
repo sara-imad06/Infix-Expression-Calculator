@@ -50,10 +50,9 @@ The application provides a menu that allows the user to select the required oper
 
 Enter your choice:
 ```
-
 ## 3. Converting and Storing Details
 
-### Infix to Postfix Conversion
+### 3.1 Infix to Postfix Conversion
 
 Valid infix expressions are converted into postfix notation using a stack.
 
@@ -67,30 +66,46 @@ The conversion process handles:
 
 Supported operators:
 
-+  -  *  /
+    +  -  *  /
 
 Supported brackets:
 
-( )  [ ]
+    ( )  [ ]
 
-### Operator Precedence
+#### Example
 
-The operators are processed according to their precedence:
+Infix expression:
 
-Highest:    *  /
-Lowest:     +  -
+    4 + (7 - 5)
+
+Postfix expression:
+
+    4 7 5 - +
+
+---
+
+### 3.2 Operator Precedence
+
+The operators are processed according to their precedence.
+
+| Operator | Precedence |
+|----------|------------|
+| `*`      | Higher     |
+| `/`      | Higher     |
+| `+`      | Lower      |
+| `-`      | Lower      |
 
 Parentheses and brackets are used to control the order of operations.
 
 For example:
 
-4 + (7 - 5)
+    4 + 7 * 2
 
-is converted to:
+The multiplication operation is performed before addition because `*` has higher precedence than `+`.
 
-4 7 5 - +
+---
 
-### Expression Evaluation
+### 3.3 Expression Evaluation
 
 After converting a valid expression to postfix notation, the postfix expression is evaluated using a stack.
 
@@ -104,18 +119,23 @@ The evaluation process is performed by:
 6. Continuing until the entire expression has been processed.
 7. Taking the final value from the stack as the result.
 
-Example:
+#### Example
 
 Infix:
-4 + (7 - 5)
+
+    4 + (7 - 5)
 
 Postfix:
-4 7 5 - +
+
+    4 7 5 - +
 
 Result:
-6
 
-### Expression Tree
+    6
+
+---
+
+### 3.4 Expression Tree
 
 For a selected valid equation, an expression tree is constructed to represent the expression.
 
@@ -127,21 +147,23 @@ The expression tree supports three traversal methods:
 
 Inorder traversal produces the infix form of the expression.
 
-Left -> Root -> Right
+    Left -> Root -> Right
 
 #### Postorder Traversal
 
 Postorder traversal produces the postfix form of the expression.
 
-Left -> Right -> Root
+    Left -> Right -> Root
 
 #### Preorder Traversal
 
 Preorder traversal produces the prefix form of the expression.
 
-Root -> Left -> Right
+    Root -> Left -> Right
 
-### Validation
+---
+
+### 3.5 Equation Validation
 
 Before converting or evaluating an equation, the program checks whether the expression is valid.
 
@@ -155,23 +177,29 @@ The program checks for errors such as:
 - Incorrect operator placement.
 - Invalid expression structure.
 
-Example:
+#### Example 1
 
-4+(16-11)6*[8+(9+7)-3]
+Input:
 
-Output:
-
-Invalid: There is no operator between 11) and 6
-
-Another example:
-
-4+(16-11)+6*[8+(9+7-3]
+    4+(16-11)6*[8+(9+7)-3]
 
 Output:
 
-Invalid: ( is not closed
+    Invalid: There is no operator between 11) and 6
 
-### Storing Details
+#### Example 2
+
+Input:
+
+    4+(16-11)+6*[8+(9+7-3]
+
+Output:
+
+    Invalid: ( is not closed
+
+---
+
+### 3.6 Storing Details
 
 For each equation, the program stores the following information:
 
@@ -184,41 +212,53 @@ For each equation, the program stores the following information:
 
 The stored information allows the different menu options to access and process the equations without reading the input file again.
 
-### Output File
+---
+
+### 3.7 Output File
 
 The final results are exported to:
 
-output.txt
+    output.txt
 
 The output file contains the processing information for every equation.
 
 For a valid equation:
 
-Equation No. 1 -> Valid
-Postfix: 4 16 11 - + 6 8 9 7 + + 3 - * +
-Result: 135
+    Equation No. 1 -> Valid
+    Postfix: 4 16 11 - + 6 8 9 7 + + 3 - * +
+    Result: 135
 
 For an invalid equation:
 
-Equation No. 2 -> Invalid
-Reason: There is no operator between 11) and 6
+    Equation No. 2 -> Invalid
+    Reason: There is no operator between 11) and 6
 
-### Example Input
+---
 
-4+(16-11)+6*[8+(9+7)-3]
-4+(16-11)6*[8+(9+7)-3]
-4+(16-11)+6*[8+(9+7-3]
-4+(7-5)
+### 3.8 Complete Example
 
-### Example Processing
+Input:
 
-Equation No. 1 -> Valid
-Postfix: 4 16 11 - + 6 8 9 7 + + 3 - * +
-Result: 135
+    4+(16-11)+6*[8+(9+7)-3]
+    4+(16-11)6*[8+(9+7)-3]
+    4+(16-11)+6*[8+(9+7-3]
+    4+(7-5)
 
-Equation No. 2 -> Invalid
-Reason: There is no operator between 11) and 6
+Processing:
 
+    Equation No. 1 -> Valid
+    Postfix: 4 16 11 - + 6 8 9 7 + + 3 - * +
+    Result: 135
+
+    Equation No. 2 -> Invalid
+    Reason: There is no operator between 11) and 6
+
+    Equation No. 3 -> Invalid
+    Reason: ( is not closed
+
+    Equation No. 4 -> Valid
+    Postfix: 4 7 5 - +
+    Result: 6
 Equation No. 3 -> Invalid
 Reason: ( is not closed
 
