@@ -33,7 +33,6 @@ The project uses the following data structures:
 
 The application provides a menu that allows the user to select the required operation.
 
-```text
 ========================================
        DATA STRUCTURES PROJECT 1
        INFIX EXPRESSION CALCULATOR
@@ -47,5 +46,27 @@ The application provides a menu that allows the user to select the required oper
 6. Expression Tree
 7. Export Results to output.txt
 8. Exit
-
 Enter your choice:
+
+## 3. Converting and Storing Details
+
+### Infix to Postfix Conversion
+
+Valid infix expressions are converted into postfix notation using a stack.
+
+The conversion process handles:
+
+- Operator precedence.
+- Parentheses and brackets.
+- Operators and operands.
+- Correct ordering of operators.
+- Nested expressions.
+
+Supported operators:
+
+```text
++  -  *  /
+
+
+
+
